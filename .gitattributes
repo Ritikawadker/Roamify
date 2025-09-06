@@ -1,2 +1,2 @@
-echo "* text=auto" > .gitattributes
-echo "node_modules/ -text" >> .gitattributes
+* text=auto
+node_modules/ -text
