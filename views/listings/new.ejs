@@ -1,0 +1,130 @@
+<% layout("/layouts/boilerplate") %>
+
+<style>
+  .form-container {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  }
+  
+  .form-label {
+    font-weight: 600;
+    color: #374151;
+  }
+  
+  .form-control {
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    transition: all 0.2s ease;
+  }
+  
+  .form-control:focus {
+    border-color: #fe424d;
+    box-shadow: 0 0 0 3px rgba(254, 66, 77, 0.1);
+  }
+  
+  .btn-primary {
+    background-color: #fe424d;
+    border: none;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: all 0.2s ease;
+  }
+  
+  .btn-primary:hover {
+    background-color: #e63946;
+    transform: translateY(-1px);
+  }
+  
+  .invalid-feedback {
+    color: #ef4444;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+  }
+</style>
+
+<body class="bg-gray-50">
+    <div class="container py-8">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+                <div class="form-container">
+                    <h2 class="text-center text-3xl font-bold text-gray-800 mb-6">Create New Listing</h2>
+                    
+                    <form method="POST" action="/listings" class="needs-validation" novalidate>
+                        <!-- Title -->
+                        <div class="mb-3">
+                            <label for="title" class="form-label">Title</label>
+                            <input type="text" class="form-control" id="title" name="listing[title]" 
+                                   placeholder="Beautiful beachfront villa" required>
+                            <div class="invalid-feedback">Please provide a title</div>
+                        </div>
+
+                        <!-- Description -->
+                        <div class="mb-3">
+                            <label for="description" class="form-label">Description</label>
+                            <textarea class="form-control" id="description" name="listing[description]" 
+                                      rows="4" placeholder="Describe your property in detail..." required></textarea>
+                            <div class="invalid-feedback">Please provide a description</div>
+                        </div>
+
+                        <!-- Image URL -->
+                        <div class="mb-3">
+                            <label for="image" class="form-label">Image URL</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-gray-100 border-r-0">
+                                    <i class="fas fa-image text-gray-500"></i>
+                                </span>
+                                <input type="url" class="form-control border-l-0" id="image" name="listing[image]" 
+                                       placeholder="https://example.com/image.jpg" required>
+                            </div>
+                            <div class="invalid-feedback">Please provide a valid image URL</div>
+                            <small class="text-gray-500 mt-1 block">We recommend using high-quality images (at least 1200x800 pixels)</small>
+                        </div>
+
+                        <!-- Price and Country -->
+                        <div class="row mb-3">
+                            <div class="col-md-6 mb-md-0">
+                                <label for="price" class="form-label">Price (₹)</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-gray-100 border-r-0">₹</span>
+                                    <input type="number" class="form-control border-l-0" id="price" name="listing[price]" 
+                                           min="0" step="1" placeholder="2500" required>
+                                </div>
+                                <div class="invalid-feedback">Please provide a valid price</div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="country" class="form-label">Country</label>
+                                <input type="text" class="form-control" id="country" name="listing[country]" 
+                                       placeholder="India" required>
+                                <div class="invalid-feedback">Please provide a country</div>
+                            </div>
+                        </div>
+
+                        <!-- Location -->
+                        <div class="mb-6">
+                            <label for="location" class="form-label">Location</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-gray-100 border-r-0">
+                                    <i class="fas fa-map-marker-alt text-gray-500"></i>
+                                </span>
+                                <input type="text" class="form-control border-l-0" id="location" name="listing[location]" 
+                                       placeholder="Goa, India" required>
+                            </div>
+                            <div class="invalid-feedback">Please provide a location</div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="d-grid mt-3">
+                            <button type="submit" class="btn btn-primary btn-lg py-2">
+                                <i class="fas fa-plus-circle mr-2"></i> Create Listing
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

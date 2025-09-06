@@ -1,0 +1,255 @@
+<% layout("/layouts/boilerplate") %>
+
+<style>
+  /* Filter Section Styling */
+  .filter-section {
+    padding: 0.5rem ;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  
+  .filter-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 2rem;
+    scrollbar-width: none; /* Firefox */
+  }
+  
+  .filter-container::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+  }
+  
+  .filter-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 80px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0.5rem;
+  }
+  
+  .filter-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+    transition: all 0.3s ease;
+  }
+  
+  .filter-item:hover .filter-icon {
+    transform: scale(1.1);
+  }
+  
+  .filter-label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #4b5563;
+    text-align: center;
+  }
+  
+  .filter-item:hover .filter-label {
+    color: #111827;
+    font-weight: 600;
+  }
+  
+  /* Listing Cards Styling */
+  .listing-card {
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  }
+  
+  .listing-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-img-container {
+    position: relative;
+    padding-top: 75%; /* 4:3 aspect ratio */
+    overflow: hidden;
+  }
+  
+  .listing-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  
+  .listing-card:hover .listing-image {
+    transform: scale(1.05);
+  }
+  
+  .card-body {
+    padding: 1.25rem;
+  }
+  
+  .card-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 0.5rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .price-text {
+    font-size: 1rem;
+    color: #111827;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  
+  .price-text span {
+    color: #6b7280;
+    font-weight: 400;
+  }
+  
+  .view-btn {
+    width: 100%;
+    border-radius: 12px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+  }
+  
+  /* Color variants for filter icons */
+  .filter-icon.trending { background-color: #fee2e2; color: #ef4444; }
+  .filter-icon.rooms { background-color: #dbeafe; color: #3b82f6; }
+  .filter-icon.city { background-color: #e9d5ff; color: #8b5cf6; }
+  .filter-icon.castles { background-color: #fef3c7; color: #d97706; }
+  .filter-icon.beach { background-color: #ccfbf1; color: #0d9488; }
+  .filter-icon.mountain { background-color: #dcfce7; color: #16a34a; }
+  .filter-icon.adventure { background-color: #ecfccb; color: #65a30d; }
+  .filter-icon.pools { background-color: #e0f2fe; color: #0284c7; }
+  .filter-icon.arctic { background-color: #e0e7ff; color: #6366f1; }
+  .filter-icon.farms { background-color: #fef3c7; color: #d97706; }
+  .filter-icon.camping { background-color: #d1fae5; color: #059669; }
+</style>
+
+<body>
+  <div class="container">
+    <!-- Filter Section -->
+    <div class="filter-section">
+      <h2 class="text-2xl font-bold text-gray-800" style="margin-left: 450px; margin-bottom: 20px;">Explore unique stays</h2>
+      <div class="filter-container">
+        <!-- Trending -->
+        <div class="filter-item">
+          <div class="filter-icon trending">
+            <i class="fa-solid fa-fire-flame-curved"></i>
+          </div>
+          <p class="filter-label">Trending</p>
+        </div>
+        
+        <!-- Rooms -->
+        <div class="filter-item">
+          <div class="filter-icon rooms">
+            <i class="fa-solid fa-bed"></i>
+          </div>
+          <p class="filter-label">Rooms</p>
+        </div>
+        
+        <!-- Iconic City -->
+        <div class="filter-item">
+          <div class="filter-icon city">
+            <i class="fa-solid fa-mountain-city"></i>
+          </div>
+          <p class="filter-label">Iconic City</p>
+        </div>
+        
+        <!-- Castles -->
+        <div class="filter-item">
+          <div class="filter-icon castles">
+            <i class="fa-brands fa-fort-awesome"></i>
+          </div>
+          <p class="filter-label">Castles</p>
+        </div>
+        
+        <!-- Beach -->
+        <div class="filter-item">
+          <div class="filter-icon beach">
+            <i class="fa-solid fa-umbrella-beach"></i>
+          </div>
+          <p class="filter-label">Beach</p>
+        </div>
+        
+        <!-- Mountain -->
+        <div class="filter-item">
+          <div class="filter-icon mountain">
+            <i class="fa-solid fa-mountain"></i>
+          </div>
+          <p class="filter-label">Mountain</p>
+        </div>
+        
+        <!-- Adventure -->
+        <div class="filter-item">
+          <div class="filter-icon adventure">
+            <i class="fa-solid fa-tree"></i>
+          </div>
+          <p class="filter-label">Adventure</p>
+        </div>
+        
+        <!-- Amazing Pools -->
+        <div class="filter-item">
+          <div class="filter-icon pools">
+            <i class="fa-solid fa-person-swimming"></i>
+          </div>
+          <p class="filter-label">Amazing Pools</p>
+        </div>
+        
+        <!-- Arctic -->
+        <div class="filter-item">
+          <div class="filter-icon arctic">
+            <i class="fa-solid fa-snowman"></i>
+          </div>
+          <p class="filter-label">Arctic</p>
+        </div>
+        
+        <!-- Farms -->
+        <div class="filter-item">
+          <div class="filter-icon farms">
+            <i class="fa-solid fa-wheat-awn"></i>
+          </div>
+          <p class="filter-label">Farms</p>
+        </div>
+        
+        <!-- Camping -->
+        <div class="filter-item">
+          <div class="filter-icon camping">
+            <i class="fa-solid fa-campground"></i>
+          </div>
+          <p class="filter-label">Camping</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Listings Grid -->
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4 py-5">
+      <% allListings.forEach(list=> { %>
+        <div class="col">
+          <div class="listing-card h-100">
+            <div class="card-img-container">
+              <img src="<%= list.image %>" class="listing-image" alt="<%= list.title %>"
+                  onerror="this.src='https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'">
+            </div>
+            <div class="card-body">
+              <h5 class="card-title"><%= list.title %></h5>
+              <p class="price-text">&#8377;<%= list.price.toLocaleString("en-IN") %> <span>/night</span></p>
+              <a href="/listings/<%= list._id %>" class="btn btn-outline-primary view-btn">View Details</a>
+            </div>
+          </div>
+        </div>
+      <% }); %>
+    </div>
+  </div>
+</body>
